@@ -5,6 +5,7 @@ const progress =  document.getElementById('progressBar')
 console.log(progress.value)
 let moved = 1 // progress bar memory 
 
+subtractProgress();
 
 function handleNext() {
    let currentImage = document.querySelector('img.active')
@@ -50,10 +51,19 @@ function handleKeyUp(e) {
 function updateProgress() {
 
 const amountToMove = document.querySelectorAll('.img');
-console.log(amountToMove)
+
 const distanceToMove = Math.floor(100 / amountToMove.length);
-console.log(amountToMove.length)
-progress.value = moved += distanceToMove;
+
+console.log(progress.value)
+// progress.value = moved += distanceToMove;
+
+if(progress.value > 97) {
+    progress.value = 0;
+    moved = 0
+  
+} else {
+    progress.value = moved += distanceToMove;
+}
 
 }
 
@@ -63,11 +73,18 @@ function subtractProgress() {
 const amountToMove = document.querySelectorAll('.img');
 console.log(amountToMove)
 const distanceToMove = Math.floor(100 / amountToMove.length);
-console.log(amountToMove.length)
 progress.value = moved -=distanceToMove;
+
+// console.log(progress.value)
+// console.log(moved)
+// TODO make progress bar work backwords after 1 full loop
+// if(progress.value === 0) {
+//     prevButton.disabled = true;
+// } else if(progress.value >= 1) {
+//     progress.value = moved -=distanceToMove;
+//     prevButton.disabled = false;
+// }
 }
-
-
 
 
 // event listeners
